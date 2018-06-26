@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.history;
+package com.example.gajdaj.myapplication.ui.main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,17 +11,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
-import com.example.gajdaj.myapplication.presentation.SettingsPresenter;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
-import com.example.gajdaj.myapplication.ui.ViewRouter;
 import com.example.gajdaj.myapplication.ui.editNew.EditItemActivity;
-import com.example.gajdaj.myapplication.ui.settings.SettingsFragment;
+import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 
 public class MainActivity extends BaseActivity {
 
     private DrawerLayout drawer;
+    private MainRouter router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +28,9 @@ public class MainActivity extends BaseActivity {
 
         initUi();
         createRouter();
-        router.addFragment(createHistoryFragment(), ViewRouter.HISTORY_FRAGMENT_TAG);
-
+        router.showHistory(R.id.history_container);
     }
 
-    private HistoryFragment createHistoryFragment() {
-
-        HistoryFragment historyFragment = router.getHistoryFragment();
-        HistoryPresenter<HistoryFragment> historyPresenter = new HistoryPresenter<>();
-        historyPresenter.onAttach(historyFragment);
-        historyFragment.setPresenter(historyPresenter);
-        return historyFragment;
-    }
-
-    private SettingsFragment createSettingFragment() {
-
-        SettingsFragment settingsFragment = router.getSettingsFragment();
-        SettingsPresenter<SettingsFragment> settingsPresenter = new SettingsPresenter<>();
-        settingsPresenter.onAttach(settingsFragment);
-        settingsFragment.setPresenter(settingsPresenter);
-        return settingsFragment;
-    }
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -59,10 +39,10 @@ public class MainActivity extends BaseActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.history_menu_item:
-                                router.replaceFragment(createHistoryFragment(), ViewRouter.HISTORY_FRAGMENT_TAG);
+                                router.showHistory(R.id.history_container);
                                 break;
                             case R.id.settings_menu_Item:
-                                router.replaceFragment(createSettingFragment(), ViewRouter.SETTINGS_FRAGMENT_TAG);
+                                router.showSettings(R.id.history_container);
                                 break;
                             default:
                                 break;
@@ -77,7 +57,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void createRouter() {
-        this.router = new ViewRouter(this, R.id.history_container);
+        this.router = new MainRouter(this);
     }
 
     @Override
@@ -89,7 +69,7 @@ public class MainActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                router.runNextActivity(EditItemActivity.class);
+                router.startActivity(EditItemActivity.class);
             }
         });
 

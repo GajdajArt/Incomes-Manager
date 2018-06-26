@@ -2,71 +2,34 @@ package com.example.gajdaj.myapplication.ui;
 
 import android.content.Intent;
 
-import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.ui.editNew.EditItemFragment;
-import com.example.gajdaj.myapplication.ui.history.HistoryFragment;
-import com.example.gajdaj.myapplication.ui.settings.SettingsFragment;
+import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 
-public class ViewRouter {
+public abstract class ViewRouter {
 
-    public static final String HISTORY_FRAGMENT_TAG = "history";
-    public static final String SETTINGS_FRAGMENT_TAG = "Settings";
-    public static final String EDITNEW_FRAGMENT_TAG = "EditNew";
 
-    private BaseActivity context;
-    private int container;
+    protected BaseActivity context;
 
-    public ViewRouter(BaseActivity context, int container) {
+    public ViewRouter(BaseActivity context) {
         this.context = context;
-        this.container = container;
     }
 
-    public void addFragment(BaseFragment fragment, String tag) {
+    protected void addFragment(BaseFragment fragment, int container) {
         context.getSupportFragmentManager()
                 .beginTransaction()
-                .add(container, fragment, tag)
+                .add(container, fragment)
                 .commit();
     }
 
-    public void replaceFragment(BaseFragment fragment, String tag) {
+    protected void replaceFragment(BaseFragment fragment, int container) {
         context.getSupportFragmentManager()
                 .beginTransaction()
-                .replace(container, fragment, tag)
+                .replace(container, fragment)
                 .commit();
     }
 
-    public void runNextActivity(Class clazz) {
+    public void startActivity(Class clazz) {
         Intent intent = new Intent(context, clazz);
         context.startActivity(intent);
-    }
-
-    public HistoryFragment getHistoryFragment() {
-        HistoryFragment historyFragment =
-                (HistoryFragment) context.getSupportFragmentManager().findFragmentByTag(HISTORY_FRAGMENT_TAG);
-        if (historyFragment == null) {
-            historyFragment = HistoryFragment.getInstance();
-        }
-
-
-        return historyFragment;
-    }
-
-    public SettingsFragment getSettingsFragment() {
-        SettingsFragment settingsFragment =
-                (SettingsFragment) context.getSupportFragmentManager().findFragmentByTag(SETTINGS_FRAGMENT_TAG);
-        if (settingsFragment == null) {
-            settingsFragment = SettingsFragment.getInstance();
-        }
-        return settingsFragment;
-    }
-
-    public EditItemFragment getEditItemFragment() {
-        EditItemFragment editItemFragment =
-                (EditItemFragment) context.getSupportFragmentManager().findFragmentByTag(EDITNEW_FRAGMENT_TAG);
-        if (editItemFragment == null) {
-            editItemFragment = EditItemFragment.getInstance();
-        }
-        return editItemFragment;
     }
 }

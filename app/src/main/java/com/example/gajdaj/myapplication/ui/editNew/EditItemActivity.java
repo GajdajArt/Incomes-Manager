@@ -6,14 +6,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.presentation.EditItemPresenter;
-import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
-import com.example.gajdaj.myapplication.ui.ViewRouter;
-import com.example.gajdaj.myapplication.ui.history.HistoryFragment;
+import com.example.gajdaj.myapplication.ui.main.history.HistoryFragment;
 
 public class EditItemActivity extends BaseActivity {
 
+    private EditItemRouter router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +20,7 @@ public class EditItemActivity extends BaseActivity {
 
         initUi();
         createRouter();
-
-        EditItemFragment editItemFragment = router.getEditItemFragment();
-        EditItemPresenter<EditItemFragment> editItemPresenter = new EditItemPresenter<>();
-        editItemPresenter.onAttach(editItemFragment);
-        editItemFragment.setPresenter(editItemPresenter);
-        router.addFragment(editItemFragment, ViewRouter.EDITNEW_FRAGMENT_TAG);
+        router.showEditItemFragment(R.id.edit_container);
 
     }
 
@@ -40,7 +33,7 @@ public class EditItemActivity extends BaseActivity {
 
     @Override
     protected void createRouter() {
-        this.router = new ViewRouter(this, R.id.edit_container);
+        this.router = new EditItemRouter(this);
     }
 
     @Override
