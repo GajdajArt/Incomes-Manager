@@ -14,7 +14,7 @@ import com.example.gajdaj.myapplication.ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsFragment extends BaseFragment {
+public class SettingsFragment extends BaseFragment implements SettingsView {
 
     private SettingsPresenter presenter;
 

@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
 import com.example.gajdaj.myapplication.ui.editNew.EditItemActivity;
-import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 
 public class MainActivity extends BaseActivity {

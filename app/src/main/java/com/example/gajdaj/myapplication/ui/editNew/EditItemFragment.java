@@ -15,7 +15,7 @@ import com.example.gajdaj.myapplication.ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EditItemFragment extends BaseFragment {
+public class EditItemFragment extends BaseFragment implements EditItemView {
 
     private EditItemPresenter presenter;
 

@@ -1,6 +1,6 @@
 package com.example.gajdaj.myapplication.domain;
 
-public class Transaction {
+public class FinanceTransaction {
 
     private String title;
     private double sum;

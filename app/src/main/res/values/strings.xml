@@ -14,4 +14,6 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_edit_item">EditItemActivity</string>
     <string name="add">Добавить</string>
+    <string name="icome">Доход</string>
+    <string name="expenses">Расход</string>
 </resources>
