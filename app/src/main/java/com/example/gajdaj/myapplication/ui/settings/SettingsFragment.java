@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.settings_screen;
+package com.example.gajdaj.myapplication.ui.settings;
 
 
 import android.os.Bundle;
@@ -8,20 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.base_elements.BasePresenter;
+import com.example.gajdaj.myapplication.presentation.Presenter;
+import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsFragment extends Fragment implements SettingsContract.View {
+public class SettingsFragment extends BaseFragment {
 
-    SettingsPresenter presenter;
+    private Presenter<SettingsFragment> presenter;
 
-
-    public SettingsFragment() {
-        // Required empty public constructor
+    public static SettingsFragment getInstance() {
+        return new SettingsFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +30,7 @@ public class SettingsFragment extends Fragment implements SettingsContract.View 
     }
 
     @Override
-    public void setPresenter(BasePresenter presenter) {
-        this.presenter = (SettingsPresenter) presenter;
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.history_screen;
+package com.example.gajdaj.myapplication.ui.history;
 
 
 import android.os.Bundle;
@@ -8,20 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.base_elements.BasePresenter;
+import com.example.gajdaj.myapplication.presentation.Presenter;
+import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HistoryFragment extends Fragment implements HistoryContract.View {
-
-    private HistoryPresenter presenter;
+public class HistoryFragment extends BaseFragment {
 
 
-    public HistoryFragment() {
-        // Required empty public constructor
+    private Presenter<HistoryFragment> presenter;
+
+    public static HistoryFragment getInstance() {
+        return new HistoryFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +31,7 @@ public class HistoryFragment extends Fragment implements HistoryContract.View {
     }
 
     @Override
-    public void setPresenter(BasePresenter presenter) {
-        this.presenter = (HistoryPresenter) presenter;
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".history_screen.HistoryActivity"
+            android:name=".ui.history.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,12 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".settings_screen.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".edit_new_ellents_screen.EditItemActivity"
+            android:name=".ui.editNew.EditItemActivity"
             android:label="@string/title_activity_edit_item"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

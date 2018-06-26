@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.edit_new_ellents_screen;
+package com.example.gajdaj.myapplication.ui.editNew;
 
 
 import android.os.Bundle;
@@ -8,20 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.base_elements.BasePresenter;
+import com.example.gajdaj.myapplication.presentation.Presenter;
+import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EditItemFragment extends Fragment implements EditItemContract.View {
+public class EditItemFragment extends BaseFragment {
 
-    private EditItemPresenter presenter;
+    private Presenter<EditItemFragment> presenter;
 
-
-    public EditItemFragment() {
-        // Required empty public constructor
+    public static EditItemFragment getInstance() {
+        return new EditItemFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +30,7 @@ public class EditItemFragment extends Fragment implements EditItemContract.View 
     }
 
     @Override
-    public void setPresenter(BasePresenter presenter) {
-        this.presenter = (EditItemPresenter) presenter;
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 }
