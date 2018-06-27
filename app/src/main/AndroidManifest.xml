@@ -24,6 +24,10 @@
             android:name=".ui.editNew.EditItemActivity"
             android:label="@string/title_activity_edit_item"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.transaction.FinTransactionActivity"
+            android:label="@string/transaction"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

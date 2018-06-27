@@ -19,8 +19,6 @@
         android:id="@+id/edit_container"
         style="@style/ContainerStyle"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/FABStyle"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

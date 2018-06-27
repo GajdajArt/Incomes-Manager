@@ -2,6 +2,7 @@ package com.example.gajdaj.myapplication.ui;
 
 import android.content.Intent;
 
+import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 
@@ -14,13 +15,6 @@ public abstract class ViewRouter {
         this.context = context;
     }
 
-    protected void addFragment(BaseFragment fragment, int container) {
-        context.getSupportFragmentManager()
-                .beginTransaction()
-                .add(container, fragment)
-                .commit();
-    }
-
     protected void replaceFragment(BaseFragment fragment, int container) {
         context.getSupportFragmentManager()
                 .beginTransaction()
@@ -28,6 +22,11 @@ public abstract class ViewRouter {
                 .commit();
     }
 
+    public void startActivity(Class clazz, int finTransactionID) {
+        Intent intent = new Intent(context, clazz);
+        intent.putExtra(PresenterView.ID_KEY, finTransactionID);
+        context.startActivity(intent);
+    }
     public void startActivity(Class clazz) {
         Intent intent = new Intent(context, clazz);
         context.startActivity(intent);

@@ -16,4 +16,9 @@
     <string name="add">Добавить</string>
     <string name="icome">Доход</string>
     <string name="expenses">Расход</string>
+    <string name="title">Название</string>
+    <string name="sum">Сумма</string>
+    <string name="current_balance">Текщий баланс</string>
+    <string name="transaction">Транзакция</string>
+
 </resources>

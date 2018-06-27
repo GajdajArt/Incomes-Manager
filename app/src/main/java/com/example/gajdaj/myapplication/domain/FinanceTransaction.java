@@ -5,6 +5,15 @@ public class FinanceTransaction {
     private String title;
     private double sum;
     private TransactionType type;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

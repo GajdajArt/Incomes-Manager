@@ -1,20 +1,26 @@
 package com.example.gajdaj.myapplication.presentation;
 
+import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.Repository;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 import com.example.gajdaj.myapplication.ui.main.history.HistoryView;
 
-public class HistoryPresenter<V extends HistoryView> extends Presenter{
+import java.util.ArrayList;
+
+public class HistoryPresenter extends Presenter<HistoryView>{
 
     private Repository repository;
+    private ArrayList<FinanceTransaction> transactions;
 
     public HistoryPresenter(Repository repository) {
         this.repository = repository;
     }
 
-    @Override
-    public void onAttach(PresenterView view) {
-        this.view = (HistoryView) view;
-        ((HistoryView) view).showData(repository.getList());
+    public void getData() {
+        transactions = repository.getList();
+    }
+
+    public void showData() {
+        view.showData(transactions);
     }
 }

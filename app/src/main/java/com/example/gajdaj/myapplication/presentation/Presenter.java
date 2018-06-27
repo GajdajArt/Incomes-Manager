@@ -5,10 +5,14 @@ public abstract class Presenter<T extends PresenterView> {
     protected T view;
 
     public void onAttach(T view) {
-        this.view = (T) view;
+        this.view =  view;
     }
 
     public void onDetach() {
         view = null;
+    }
+
+    interface Callback{
+        void callingBack();
     }
 }

@@ -82,6 +82,10 @@ public class MainActivity extends BaseActivity {
         setupDrawerContent(navigationView);
     }
 
+    public MainRouter getRouter() {
+        return router;
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

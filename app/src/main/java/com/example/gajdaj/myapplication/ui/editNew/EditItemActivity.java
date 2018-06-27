@@ -1,13 +1,14 @@
 package com.example.gajdaj.myapplication.ui.editNew;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+
 
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
-import com.example.gajdaj.myapplication.ui.main.history.HistoryFragment;
+
 
 public class EditItemActivity extends BaseActivity {
 
@@ -45,14 +46,6 @@ public class EditItemActivity extends BaseActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_launcher_background));
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        toolbar.setNavigationIcon(getResources().getDrawable(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material));
     }
 }

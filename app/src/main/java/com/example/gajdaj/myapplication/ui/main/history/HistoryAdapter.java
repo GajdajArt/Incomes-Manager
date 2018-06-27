@@ -9,16 +9,21 @@ import android.widget.TextView;
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionType;
+import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
+import com.example.gajdaj.myapplication.ui.main.MainActivity;
+import com.example.gajdaj.myapplication.ui.transaction.FinTransactionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryHolder> {
 
-    List<FinanceTransaction> items;
+    private List<FinanceTransaction> items;
+    private HistoryPresenter presenter;
 
-    public HistoryAdapter() {
+    public HistoryAdapter(HistoryPresenter presenter) {
         this.items = new ArrayList<>();
+        this.presenter = presenter;
     }
 
     @Override
@@ -33,6 +38,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
 
         holder.title.setText(transaction.getTitle());
         holder.sum.setText(String.valueOf(transaction.getSum()));
+        holder.id = transaction.getId();
 
         switch (transaction.getType()) {
             case INCOME:
@@ -42,7 +48,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
                 holder.type.setText(R.string.expenses);
                 break;
         }
-
     }
 
     @Override
@@ -66,20 +71,27 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
     }
 
 
-    public class HistoryHolder extends RecyclerView.ViewHolder {
+    public class HistoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title;
         TextView type;
         TextView sum;
+        int id;
+
 
         HistoryHolder(View view) {
             super(view);
+            view.setOnClickListener(this);
             title = (TextView) view.findViewById(R.id.item_title);
             type = (TextView) view.findViewById(R.id.item_type);
             sum = (TextView) view.findViewById(R.id.item_sum);
         }
 
+        @Override
+        public void onClick(View v) {
+            MainActivity mainActivity = (MainActivity) v.getContext();
+            mainActivity.getRouter().startActivity(FinTransactionActivity.class, id);
+        }
     }
-
 }
 

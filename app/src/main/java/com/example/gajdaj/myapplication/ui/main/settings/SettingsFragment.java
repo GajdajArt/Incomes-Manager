@@ -26,7 +26,7 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        presenter = new SettingsPresenter<SettingsFragment>();
+        presenter = new SettingsPresenter();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }

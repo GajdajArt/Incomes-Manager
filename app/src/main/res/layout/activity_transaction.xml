@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.editNew.EditItemActivity">
 
     <android.support.design.widget.AppBarLayout
         style="@style/AppBarStyle">
@@ -15,10 +16,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/history_container"
+        android:id="@+id/transaction_container"
         style="@style/ContainerStyle"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/FABStyle" />
 </android.support.design.widget.CoordinatorLayout>
