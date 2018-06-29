@@ -14,11 +14,14 @@ import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
 import com.example.gajdaj.myapplication.ui.editNew.EditItemActivity;
 
+import javax.inject.Inject;
+
 
 public class MainActivity extends BaseActivity {
 
     private DrawerLayout drawer;
-    private MainRouter router;
+
+    MainRouter router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         initUi();
-        createRouter();
+//        createRouter();
         router.showHistory(R.id.history_container);
     }
 

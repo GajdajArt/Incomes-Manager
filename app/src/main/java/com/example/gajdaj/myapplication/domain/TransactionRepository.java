@@ -17,8 +17,6 @@ public interface TransactionRepository {
 
     ArrayList<FinanceTransaction> getList();
 
-    double getBalance();
-
     void editItem(FinanceTransaction transaction, int id);
 
 }

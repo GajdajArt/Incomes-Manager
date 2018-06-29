@@ -5,8 +5,11 @@ import com.example.gajdaj.myapplication.ui.ViewRouter;
 import com.example.gajdaj.myapplication.ui.main.history.HistoryFragment;
 import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
+import javax.inject.Inject;
+
 public class MainRouter extends ViewRouter {
 
+    @Inject
     public MainRouter(BaseActivity context) {
         super(context);
     }

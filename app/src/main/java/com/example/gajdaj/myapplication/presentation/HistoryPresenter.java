@@ -1,18 +1,18 @@
 package com.example.gajdaj.myapplication.presentation;
 
-import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.ui.main.history.HistoryView;
 
-import java.util.ArrayList;
+import javax.inject.Inject;
 
 public class HistoryPresenter extends Presenter<HistoryView>{
 
     private TransactionRepository repository;
-    private ArrayList<FinanceTransaction> transactions;
 
-    public HistoryPresenter(TransactionRepository repository) {
+    @Inject
+    public HistoryPresenter(TransactionRepository repository, HistoryView view) {
         this.repository = repository;
+        this.view = view;
     }
 
 

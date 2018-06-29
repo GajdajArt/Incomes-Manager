@@ -19,12 +19,16 @@ import com.example.gajdaj.myapplication.ui.MyAsyncTask;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HistoryFragment extends BaseFragment implements HistoryView {
 
-    private HistoryPresenter presenter;
+    @Inject
+    HistoryPresenter presenter;
+
     private HistoryAdapter adapter;
 
     public static HistoryFragment getInstance() {
@@ -34,9 +38,8 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
-        presenter = new HistoryPresenter(App.getRepository());
+//        presenter = new HistoryPresenter(App.getRepository());
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 

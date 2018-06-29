@@ -8,7 +8,6 @@ import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 public abstract class ViewRouter {
 
-
     protected BaseActivity context;
 
     public ViewRouter(BaseActivity context) {

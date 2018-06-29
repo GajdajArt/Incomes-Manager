@@ -4,14 +4,16 @@ import android.content.Context;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionRepository;
-import com.example.gajdaj.myapplication.domain.TransactionType;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 public class SQLiteRepository implements TransactionRepository {
 
     private TransactionDAO dao;
 
+    @Inject
     public SQLiteRepository(Context context) {
         dao = new TransactionSQLiteDAO(context);
     }
@@ -57,21 +59,6 @@ public class SQLiteRepository implements TransactionRepository {
         return dao.getList();
     }
 
-    @Override
-    public double getBalance() {
-
-        ArrayList<FinanceTransaction> list = dao.getList();
-        double result = 0;
-
-        for (FinanceTransaction tr : list) {
-            if (tr.getType() == TransactionType.INCOME) {
-                result += tr.getSum();
-            } else {
-                result -= tr.getSum();
-            }
-        }
-        return result;
-    }
 
     @Override
     public void editItem(FinanceTransaction transaction, int id) {

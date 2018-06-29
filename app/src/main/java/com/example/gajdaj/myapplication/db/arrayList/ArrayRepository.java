@@ -6,19 +6,19 @@ import com.example.gajdaj.myapplication.domain.TransactionType;
 
 import java.util.ArrayList;
 
-public class RepositoryImpl implements TransactionRepository {
+public class ArrayRepository implements TransactionRepository {
 
     private ArrayList<FinanceTransaction> list;
-    private static RepositoryImpl instance;
+    private static ArrayRepository instance;
     private int CURRENT_ID = 0;
 
-    private RepositoryImpl() {
+    private ArrayRepository() {
         this.list = new ArrayList<>();
     }
 
-    public static RepositoryImpl getInstance() {
+    public static ArrayRepository getInstance() {
         if (instance == null) {
-            instance = new RepositoryImpl();
+            instance = new ArrayRepository();
         }
         return instance;
     }
@@ -35,20 +35,6 @@ public class RepositoryImpl implements TransactionRepository {
         }
         return result;
 
-    }
-
-    @Override
-    public double getBalance() {
-
-        double result = 0;
-        for (FinanceTransaction tr : list) {
-            if (tr.getType() == TransactionType.INCOME) {
-                result += tr.getSum();
-            } else {
-                result -= tr.getSum();
-            }
-        }
-        return result;
     }
 
     @Override
