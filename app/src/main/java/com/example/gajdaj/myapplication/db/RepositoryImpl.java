@@ -1,13 +1,10 @@
 package com.example.gajdaj.myapplication.db;
 
-import android.os.AsyncTask;
-
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.Repository;
 import com.example.gajdaj.myapplication.domain.TransactionType;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 public class RepositoryImpl implements Repository {
@@ -44,96 +41,49 @@ public class RepositoryImpl implements Repository {
     @Override
     public double getBalance() {
 
-        AsyncTask<Void, Void, Double> a = new AsyncTask<Void, Void, Double>() {
-            @Override
-            protected Double doInBackground(Void... voids) {
-
-                double result = 0;
-                for (FinanceTransaction tr : list) {
-                    if (tr.getType() == TransactionType.INCOME) {
-                        result += tr.getSum();
-                    } else {
-                        result -= tr.getSum();
-                    }
-                }
-                return result;
-            }
-        };
-
-        a.execute();
         double result = 0;
-        try {
-            result = a.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        for (FinanceTransaction tr : list) {
+            if (tr.getType() == TransactionType.INCOME) {
+                result += tr.getSum();
+            } else {
+                result -= tr.getSum();
+            }
         }
         return result;
+
     }
 
     @Override
     public int getId(FinanceTransaction transaction) {
 
-        AsyncTask<FinanceTransaction, Void, Integer> a = new AsyncTask<FinanceTransaction, Void, Integer>() {
-            @Override
-            protected Integer doInBackground(FinanceTransaction... transaction) {
-                int id = -1;
-                for (int i = 0; i < list.size(); i++) {
-                    FinanceTransaction item = list.get(i);
-                    if (item.getTitle().equals(transaction[0].getTitle())
-                            && item.getSum() == item.getSum()) {
-                        id = item.getId();
-                    }
-                }
-                return id;
+        int id = -1;
+        for (int i = 0; i < list.size(); i++) {
+            FinanceTransaction item = list.get(i);
+            if (item.getTitle().equals(transaction.getTitle())
+                    && item.getSum() == item.getSum()) {
+                id = item.getId();
             }
-        };
-
-        a.execute(transaction);
-        int result = -1;
-        try {
-            result = a.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
         }
-        return result;
+        return id;
+
     }
 
     @Override
     public void editItem(FinanceTransaction transaction, final int id) {
-
-        AsyncTask<FinanceTransaction, Void, Void> a = new AsyncTask<FinanceTransaction, Void, Void>() {
-            @Override
-            protected Void doInBackground(FinanceTransaction... transactions) {
-                replace(transactions[0], id);
-                return null;
-            }
-        };
-        a.execute(transaction);
+        replace(transaction, id);
     }
 
-    private synchronized void replace(FinanceTransaction transaction, int id) {
+    private void replace(FinanceTransaction transaction, int id) {
         list.remove(getItem(id));
         add(transaction);
     }
 
     @Override
     public void addNewItem(FinanceTransaction transaction) {
-
-        AsyncTask<FinanceTransaction, Void, Void> a = new AsyncTask<FinanceTransaction, Void, Void>() {
-            @Override
-            protected Void doInBackground(FinanceTransaction... transactions) {
-                add(transactions[0]);
-                return null;
-            }
-        };
-        a.execute(transaction);
+        add(transaction);
     }
 
-    private synchronized void add(FinanceTransaction transaction) {
+    private void add(FinanceTransaction transaction) {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -145,15 +95,7 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void removeItem(int id) {
-        AsyncTask<Integer, Void, Void> a = new AsyncTask<Integer, Void, Void>() {
-
-            @Override
-            protected Void doInBackground(Integer... integers) {
-                remove(integers[0]);
-                return null;
-            }
-        };
-        a.execute(id);
+        remove(id);
     }
 
     private synchronized void remove(int id) {
@@ -162,15 +104,10 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void removeItem(FinanceTransaction transaction) {
-        AsyncTask<FinanceTransaction, Void, Void> a = new AsyncTask<FinanceTransaction, Void, Void>() {
-            @Override
-            protected Void doInBackground(FinanceTransaction... transactions) {
-                FinanceTransaction t = transactions[0];
-                remove(t);
-                return null;
-            }
-        };
-        a.execute(transaction);
+
+        FinanceTransaction t = transaction;
+        remove(t);
+
     }
 
     private synchronized void remove(FinanceTransaction transaction) {

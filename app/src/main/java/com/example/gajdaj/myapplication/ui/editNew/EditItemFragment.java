@@ -1,6 +1,7 @@
 package com.example.gajdaj.myapplication.ui.editNew;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -13,8 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.db.RepositoryImpl;
+import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionType;
 import com.example.gajdaj.myapplication.presentation.EditItemPresenter;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
@@ -30,7 +31,7 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
     private TextView sum;
     private Spinner type;
 
-    private int id;
+    private int id = -1;
 
     public static EditItemFragment getInstance() {
         return new EditItemFragment();
@@ -69,34 +70,50 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         type.setAdapter(arrayAdapter);
 
-        setUI();
 
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    if (isValid()) {
 
-                        FinanceTransaction transaction = new FinanceTransaction();
-                        transaction.setTitle(title.getText().toString());
-                        transaction.setSum(Double.parseDouble(sum.getText().toString()));
+                if (isValid()) {
+
+                    FinanceTransaction transaction = new FinanceTransaction();
+                    transaction.setTitle(title.getText().toString());
+                    transaction.setSum(Double.parseDouble(sum.getText().toString()));
+
+                    if (type.getSelectedItem().equals(TransactionType.INCOME.toString())) {
                         transaction.setType(TransactionType.INCOME);
-
-                        if (EditItemFragment.this.getArguments() != null) {
-                            presenter.editItem(transaction, id);
-                        } else {
-                            presenter.addNewItem(transaction);
-                        }
-                        getActivity().onBackPressed();
+                    } else {
+                        transaction.setType(TransactionType.EXPENSES);
                     }
+
+                    AsyncTask<FinanceTransaction, Void, Void> a =
+                            new AsyncTask<FinanceTransaction, Void, Void>() {
+                                @Override
+                                protected Void doInBackground(FinanceTransaction... transactions) {
+
+                                    if (id != -1) {
+                                        presenter.editItem(transactions[0], id);
+                                    } else {
+                                        presenter.addNewItem(transactions[0]);
+                                    }
+                                    return null;
+                                }
+                            };
+                    a.execute(transaction);
+                    getActivity().onBackPressed();
+                }
             }
         });
     }
 
-    private void setUI(){
+    private void setUI() {
         if (this.getArguments() != null) {
             id = this.getArguments().getInt(PresenterView.ID_KEY);
+            presenter.setUiByID(id);
+
         }
     }
 
@@ -137,6 +154,7 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
     public void onResume() {
         super.onResume();
         presenter.onAttach(this);
+        setUI();
     }
 
     @Override

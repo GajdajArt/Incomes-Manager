@@ -2,7 +2,6 @@ package com.example.gajdaj.myapplication.presentation;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.Repository;
-import com.example.gajdaj.myapplication.ui.BaseFragment;
 import com.example.gajdaj.myapplication.ui.main.history.HistoryView;
 
 import java.util.ArrayList;
@@ -21,6 +20,8 @@ public class HistoryPresenter extends Presenter<HistoryView>{
     }
 
     public void showData() {
-        view.showData(transactions);
+        if (view != null) {
+            view.showData(transactions);
+        }
     }
 }

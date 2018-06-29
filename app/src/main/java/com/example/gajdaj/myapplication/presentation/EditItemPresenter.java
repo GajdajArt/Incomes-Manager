@@ -40,6 +40,7 @@ public class EditItemPresenter extends Presenter<EditItemView> {
 
     public void setUiByID(int id) {
         FinanceTransaction transaction = repository.getItem(id);
+        view.showData(transaction);
     }
 
     public void editItem(FinanceTransaction transaction, int id) {

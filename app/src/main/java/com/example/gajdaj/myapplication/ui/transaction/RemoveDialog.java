@@ -35,6 +35,7 @@ public class RemoveDialog implements PresenterView{
             public void onClick(DialogInterface dialog, int which) {
                 presenter.removeItem(id);
                 dialog.cancel();
+                context.onBackPressed();
             }
         });
         builder.setNegativeButton("НЕТ", new DialogInterface.OnClickListener() {
