@@ -57,7 +57,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
 
     public void setItemsList(List<FinanceTransaction> list) {
         items.addAll(list);
-        notifyDataSetChanged();
     }
 
     public void addNewItem(FinanceTransaction transaction) {

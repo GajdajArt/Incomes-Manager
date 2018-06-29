@@ -20,6 +20,7 @@ import com.example.gajdaj.myapplication.domain.TransactionType;
 import com.example.gajdaj.myapplication.presentation.EditItemPresenter;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
+import com.example.gajdaj.myapplication.ui.MyAsyncTask;
 
 import java.util.ArrayList;
 
@@ -79,7 +80,7 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
 
                 if (isValid()) {
 
-                    FinanceTransaction transaction = new FinanceTransaction();
+                    final FinanceTransaction transaction = new FinanceTransaction();
                     transaction.setTitle(title.getText().toString());
                     transaction.setSum(Double.parseDouble(sum.getText().toString()));
 
@@ -89,19 +90,16 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
                         transaction.setType(TransactionType.EXPENSES);
                     }
 
-                    AsyncTask<FinanceTransaction, Void, Void> a =
-                            new AsyncTask<FinanceTransaction, Void, Void>() {
-                                @Override
-                                protected Void doInBackground(FinanceTransaction... transactions) {
-
-                                    if (id != -1) {
-                                        presenter.editItem(transactions[0], id);
-                                    } else {
-                                        presenter.addNewItem(transactions[0]);
-                                    }
-                                    return null;
-                                }
-                            };
+                    MyAsyncTask a = new MyAsyncTask(new MyAsyncTask.ActionCallback() {
+                        @Override
+                        public void run() {
+                            if (id != -1) {
+                                presenter.editItem(transaction, id);
+                            } else {
+                                presenter.addNewItem(transaction);
+                            }
+                        }
+                    }, null);
                     a.execute(transaction);
                     getActivity().onBackPressed();
                 }
@@ -113,7 +111,6 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
         if (this.getArguments() != null) {
             id = this.getArguments().getInt(PresenterView.ID_KEY);
             presenter.setUiByID(id);
-
         }
     }
 

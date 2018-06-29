@@ -1,7 +1,6 @@
 package com.example.gajdaj.myapplication.ui.main.history;
 
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -16,6 +15,7 @@ import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.db.RepositoryImpl;
 import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
+import com.example.gajdaj.myapplication.ui.MyAsyncTask;
 
 import java.util.ArrayList;
 
@@ -56,22 +56,18 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
     public void onResume() {
         super.onResume();
         presenter.onAttach(this);
-
-        AsyncTask<Void, Void, Void> a = new AsyncTask<Void, Void, Void>() {
+        MyAsyncTask a = new MyAsyncTask(new MyAsyncTask.ActionCallback() {
             @Override
-            protected Void doInBackground(Void... voids) {
+            public void run() {
                 presenter.getData();
-                return null;
             }
-
+        }, new MyAsyncTask.ResultCallback() {
             @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                presenter.showData();
+            public void run() {
+                adapter.notifyDataSetChanged();
             }
-        };
+        });
         a.execute();
-
     }
 
     @Override

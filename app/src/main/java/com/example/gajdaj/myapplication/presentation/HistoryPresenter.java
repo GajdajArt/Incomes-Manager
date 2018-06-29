@@ -15,13 +15,8 @@ public class HistoryPresenter extends Presenter<HistoryView>{
         this.repository = repository;
     }
 
-    public void getData() {
-        transactions = repository.getList();
-    }
 
-    public void showData() {
-        if (view != null) {
-            view.showData(transactions);
-        }
+    public void getData() {
+        view.showData(repository.getList());
     }
 }
