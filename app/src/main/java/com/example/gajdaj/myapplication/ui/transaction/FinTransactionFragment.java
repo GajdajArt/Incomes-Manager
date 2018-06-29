@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
+import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.db.RepositoryImpl;
 import com.example.gajdaj.myapplication.presentation.FinTransactionPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 
@@ -34,8 +34,8 @@ public class FinTransactionFragment extends BaseFragment implements FinTransacti
         if (this.getArguments() != null) {
             id = this.getArguments().getInt(ID_KEY);
         }
-        RepositoryImpl repository = RepositoryImpl.getInstance();
-        presenter = new FinTransactionPresenter(repository, id);
+
+        presenter = new FinTransactionPresenter(App.getRepository(), id);
 
         return inflater.inflate(R.layout.fragment_transaction, container, false);
     }

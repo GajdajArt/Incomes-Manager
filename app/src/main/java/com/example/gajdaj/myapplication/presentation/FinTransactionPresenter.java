@@ -1,18 +1,16 @@
 package com.example.gajdaj.myapplication.presentation;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.Repository;
+import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.ui.transaction.FinTransactionView;
-
-import java.util.concurrent.Callable;
 
 public class FinTransactionPresenter extends Presenter<FinTransactionView> {
 
-    private Repository repository;
+    private TransactionRepository repository;
     private int id;
     private FinanceTransaction transaction;
 
-    public FinTransactionPresenter(Repository repository, int id) {
+    public FinTransactionPresenter(TransactionRepository repository, int id) {
         this.repository = repository;
         this.id = id;
     }

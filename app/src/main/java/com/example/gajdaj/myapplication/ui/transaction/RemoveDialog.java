@@ -3,8 +3,7 @@ package com.example.gajdaj.myapplication.ui.transaction;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
-import com.example.gajdaj.myapplication.domain.Repository;
-import com.example.gajdaj.myapplication.db.RepositoryImpl;
+import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.presentation.RemoveDialogPresenter;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
@@ -18,8 +17,7 @@ public class RemoveDialog implements PresenterView{
     protected RemoveDialog(BaseActivity context, int id) {
         this.context = context;
         this.id = id;
-        Repository repository = RepositoryImpl.getInstance();
-        presenter = new RemoveDialogPresenter(repository);
+        presenter = new RemoveDialogPresenter(App.getRepository());
     }
 
     public void show(){

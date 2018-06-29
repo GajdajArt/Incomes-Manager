@@ -3,7 +3,7 @@ package com.example.gajdaj.myapplication.domain;
 import java.util.ArrayList;
 
 
-public interface Repository {
+public interface TransactionRepository {
 
     void addNewItem(FinanceTransaction transaction);
 

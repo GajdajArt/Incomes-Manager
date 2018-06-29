@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
+import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.db.RepositoryImpl;
 import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 import com.example.gajdaj.myapplication.ui.MyAsyncTask;
@@ -35,8 +35,8 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RepositoryImpl repository = RepositoryImpl.getInstance();
-        presenter = new HistoryPresenter(repository);
+
+        presenter = new HistoryPresenter(App.getRepository());
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 

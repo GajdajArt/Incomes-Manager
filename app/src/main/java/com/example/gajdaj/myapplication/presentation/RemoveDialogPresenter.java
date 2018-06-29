@@ -1,13 +1,13 @@
 package com.example.gajdaj.myapplication.presentation;
 
-import com.example.gajdaj.myapplication.domain.Repository;
+import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.ui.transaction.RemoveDialog;
 
 public class RemoveDialogPresenter extends Presenter<RemoveDialog> {
 
-    Repository repository;
+    TransactionRepository repository;
 
-    public RemoveDialogPresenter(Repository repository) {
+    public RemoveDialogPresenter(TransactionRepository repository) {
         this.repository = repository;
     }
 

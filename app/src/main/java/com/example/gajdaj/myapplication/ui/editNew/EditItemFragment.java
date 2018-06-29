@@ -1,7 +1,6 @@
 package com.example.gajdaj.myapplication.ui.editNew;
 
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -14,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.db.RepositoryImpl;
+import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionType;
 import com.example.gajdaj.myapplication.presentation.EditItemPresenter;
@@ -41,8 +40,7 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        RepositoryImpl repository = RepositoryImpl.getInstance();
-        presenter = new EditItemPresenter(repository);
+        presenter = new EditItemPresenter(App.getRepository());
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fin_fragment_edit_item, container, false);
     }

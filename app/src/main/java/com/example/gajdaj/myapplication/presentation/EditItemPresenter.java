@@ -1,14 +1,14 @@
 package com.example.gajdaj.myapplication.presentation;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.Repository;
+import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.ui.editNew.EditItemView;
 
 public class EditItemPresenter extends Presenter<EditItemView> {
 
-    private Repository repository;
+    private TransactionRepository repository;
 
-    public EditItemPresenter(Repository repository) {
+    public EditItemPresenter(TransactionRepository repository) {
         this.repository = repository;
     }
 

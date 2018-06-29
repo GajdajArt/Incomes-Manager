@@ -1,17 +1,17 @@
 package com.example.gajdaj.myapplication.presentation;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.Repository;
+import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.ui.main.history.HistoryView;
 
 import java.util.ArrayList;
 
 public class HistoryPresenter extends Presenter<HistoryView>{
 
-    private Repository repository;
+    private TransactionRepository repository;
     private ArrayList<FinanceTransaction> transactions;
 
-    public HistoryPresenter(Repository repository) {
+    public HistoryPresenter(TransactionRepository repository) {
         this.repository = repository;
     }
 

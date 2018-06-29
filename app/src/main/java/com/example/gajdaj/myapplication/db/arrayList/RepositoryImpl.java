@@ -1,13 +1,12 @@
-package com.example.gajdaj.myapplication.db;
+package com.example.gajdaj.myapplication.db.arrayList;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.Repository;
+import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.domain.TransactionType;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
-public class RepositoryImpl implements Repository {
+public class RepositoryImpl implements TransactionRepository {
 
     private ArrayList<FinanceTransaction> list;
     private static RepositoryImpl instance;
@@ -50,7 +49,6 @@ public class RepositoryImpl implements Repository {
             }
         }
         return result;
-
     }
 
     @Override
@@ -84,11 +82,6 @@ public class RepositoryImpl implements Repository {
     }
 
     private void add(FinanceTransaction transaction) {
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         transaction.setId(++CURRENT_ID);
         list.add(transaction);
     }
@@ -98,24 +91,22 @@ public class RepositoryImpl implements Repository {
         remove(id);
     }
 
-    private synchronized void remove(int id) {
+    private void remove(int id) {
         list.remove(getItem(id));
     }
 
     @Override
     public void removeItem(FinanceTransaction transaction) {
-
         FinanceTransaction t = transaction;
         remove(t);
-
     }
 
-    private synchronized void remove(FinanceTransaction transaction) {
+    private void remove(FinanceTransaction transaction) {
         list.remove(transaction);
     }
 
     @Override
-    public synchronized ArrayList<FinanceTransaction> getList() {
+    public ArrayList<FinanceTransaction> getList() {
         return list;
     }
 }
