@@ -20,5 +20,6 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        style="@style/FABStyle" />
+        style="@style/FABStyle"
+        android:src="@drawable/ic_add_black_24dp"/>
 </android.support.design.widget.CoordinatorLayout>

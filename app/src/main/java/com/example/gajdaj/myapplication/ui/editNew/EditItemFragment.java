@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.RepositoryImpl;
+import com.example.gajdaj.myapplication.db.RepositoryImpl;
 import com.example.gajdaj.myapplication.domain.TransactionType;
 import com.example.gajdaj.myapplication.presentation.EditItemPresenter;
 import com.example.gajdaj.myapplication.presentation.PresenterView;

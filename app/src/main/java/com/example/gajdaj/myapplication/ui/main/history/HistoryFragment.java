@@ -3,7 +3,6 @@ package com.example.gajdaj.myapplication.ui.main.history;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,12 +13,11 @@ import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.RepositoryImpl;
+import com.example.gajdaj.myapplication.db.RepositoryImpl;
 import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,10 +59,6 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
 
         AsyncTask<Void, Void, Void> a = new AsyncTask<Void, Void, Void>() {
             @Override
-            protected void onPreExecute() {
-            }
-
-            @Override
             protected Void doInBackground(Void... voids) {
                 presenter.getData();
                 return null;
@@ -76,6 +70,7 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
                 presenter.showData();
             }
         };
+        a.execute();
 
     }
 

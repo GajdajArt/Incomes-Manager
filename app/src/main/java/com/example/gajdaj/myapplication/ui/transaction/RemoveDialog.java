@@ -1,11 +1,10 @@
 package com.example.gajdaj.myapplication.ui.transaction;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
 import com.example.gajdaj.myapplication.domain.Repository;
-import com.example.gajdaj.myapplication.domain.RepositoryImpl;
+import com.example.gajdaj.myapplication.db.RepositoryImpl;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.presentation.RemoveDialogPresenter;
 import com.example.gajdaj.myapplication.ui.BaseActivity;

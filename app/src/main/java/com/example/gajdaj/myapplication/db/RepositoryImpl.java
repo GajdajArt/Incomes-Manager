@@ -1,6 +1,10 @@
-package com.example.gajdaj.myapplication.domain;
+package com.example.gajdaj.myapplication.db;
 
 import android.os.AsyncTask;
+
+import com.example.gajdaj.myapplication.domain.FinanceTransaction;
+import com.example.gajdaj.myapplication.domain.Repository;
+import com.example.gajdaj.myapplication.domain.TransactionType;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -26,30 +30,15 @@ public class RepositoryImpl implements Repository {
     @Override
     public FinanceTransaction getItem(int id) {
 
-        AsyncTask<Integer, Void, FinanceTransaction> a = new AsyncTask<Integer, Void, FinanceTransaction>() {
-            @Override
-            protected FinanceTransaction doInBackground(Integer... integers) {
-                FinanceTransaction result = null;
-                for (int i = 0; i < list.size(); i++) {
-                    FinanceTransaction transaction = list.get(i);
-                    if (transaction.getId() == integers[0]) {
-                        result = transaction;
-                    }
-                }
-                return result;
+        FinanceTransaction result = null;
+        for (int i = 0; i < list.size(); i++) {
+            FinanceTransaction transaction = list.get(i);
+            if (transaction.getId() == id) {
+                result = transaction;
             }
-        };
-
-        a.execute(id);
-        FinanceTransaction transaction = null;
-        try {
-            transaction = a.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
         }
-        return transaction;
+        return result;
+
     }
 
     @Override
@@ -59,9 +48,9 @@ public class RepositoryImpl implements Repository {
             @Override
             protected Double doInBackground(Void... voids) {
 
-                double result  = 0;
-                for (FinanceTransaction tr: list) {
-                    if(tr.getType() == TransactionType.INCOME) {
+                double result = 0;
+                for (FinanceTransaction tr : list) {
+                    if (tr.getType() == TransactionType.INCOME) {
                         result += tr.getSum();
                     } else {
                         result -= tr.getSum();
@@ -74,7 +63,7 @@ public class RepositoryImpl implements Repository {
         a.execute();
         double result = 0;
         try {
-             result = a.get();
+            result = a.get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
