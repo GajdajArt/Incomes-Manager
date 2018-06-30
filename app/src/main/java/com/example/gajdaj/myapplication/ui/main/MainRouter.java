@@ -1,16 +1,15 @@
 package com.example.gajdaj.myapplication.ui.main;
 
-import com.example.gajdaj.myapplication.ui.BaseActivity;
 import com.example.gajdaj.myapplication.ui.ViewRouter;
 import com.example.gajdaj.myapplication.ui.main.history.HistoryFragment;
 import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 import javax.inject.Inject;
 
-public class MainRouter extends ViewRouter {
+public class MainRouter extends ViewRouter<MainActivity> {
 
     @Inject
-    public MainRouter(BaseActivity context) {
+    public MainRouter(MainActivity context) {
         super(context);
     }
 

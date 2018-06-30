@@ -12,14 +12,18 @@ import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.presentation.FinTransactionPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 
+import javax.inject.Inject;
+
 public class FinTransactionFragment extends BaseFragment implements FinTransactionView {
 
-    private FinTransactionPresenter presenter;
+    @Inject
+    FinTransactionPresenter presenter;
 
     private TextView titleTV;
     private TextView sumTV;
     private TextView typeTV;
     private TextView balanceTV;
+    private int id;
 
 
     public static FinTransactionFragment getInstance() {
@@ -30,12 +34,10 @@ public class FinTransactionFragment extends BaseFragment implements FinTransacti
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        int id = 0;
+        id = 0;
         if (this.getArguments() != null) {
             id = this.getArguments().getInt(ID_KEY);
         }
-
-        presenter = new FinTransactionPresenter(App.getRepository(), id);
 
         return inflater.inflate(R.layout.fragment_transaction, container, false);
     }
@@ -45,7 +47,6 @@ public class FinTransactionFragment extends BaseFragment implements FinTransacti
         super.onStart();
         initUI();
     }
-
 
     private void initUI() {
         titleTV = (TextView) getActivity().findViewById(R.id.title_text_view);

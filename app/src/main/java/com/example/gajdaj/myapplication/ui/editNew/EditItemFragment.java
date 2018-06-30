@@ -23,10 +23,13 @@ import com.example.gajdaj.myapplication.ui.MyAsyncTask;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 
 public class EditItemFragment extends BaseFragment implements EditItemView {
 
-    private EditItemPresenter presenter;
+    @Inject
+    EditItemPresenter presenter;
     private EditText title;
     private TextView sum;
     private Spinner type;
@@ -40,7 +43,6 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        presenter = new EditItemPresenter(App.getRepository());
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fin_fragment_edit_item, container, false);
     }

@@ -4,9 +4,12 @@ import com.example.gajdaj.myapplication.ui.BaseActivity;
 import com.example.gajdaj.myapplication.ui.ViewRouter;
 import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
-public class EditItemRouter extends ViewRouter {
+import javax.inject.Inject;
 
-    public EditItemRouter(BaseActivity context) {
+public class EditItemRouter extends ViewRouter<EditItemActivity> {
+
+    @Inject
+    public EditItemRouter(EditItemActivity context) {
         super(context);
     }
 

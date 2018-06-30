@@ -10,12 +10,12 @@ import com.example.gajdaj.myapplication.domain.TransactionType;
 
 import java.util.ArrayList;
 
-public class TransactionSQLiteDAO implements TransactionDAO {
+public class TransactionDAOImpl implements TransactionDAO {
 
     private MyDBHelper helper;
     private SQLiteDatabase db;
 
-    public TransactionSQLiteDAO(Context context) {
+    public TransactionDAOImpl(Context context) {
         helper = new MyDBHelper(context);
     }
 

@@ -15,9 +15,12 @@ import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
 
+import javax.inject.Inject;
+
 public class FinTransactionActivity extends BaseActivity{
 
-    private FinTransactionRouter router;
+    @Inject
+    FinTransactionRouter router;
     private int id;
 
     @Override
@@ -26,7 +29,6 @@ public class FinTransactionActivity extends BaseActivity{
         setContentView(R.layout.activity_transaction);
 
         initUi();
-        createRouter();
         Intent intent = getIntent();
         id = intent.getIntExtra(PresenterView.ID_KEY, 0);
 
@@ -67,15 +69,9 @@ public class FinTransactionActivity extends BaseActivity{
 
 
     @Override
-    protected void createRouter() {
-        this.router = new FinTransactionRouter(this);
-    }
-
-    @Override
     protected void initUi() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.add);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -20,7 +20,7 @@ import javax.inject.Inject;
 public class MainActivity extends BaseActivity {
 
     private DrawerLayout drawer;
-
+    @Inject
     MainRouter router;
 
     @Override
@@ -29,7 +29,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         initUi();
-//        createRouter();
         router.showHistory(R.id.history_container);
     }
 
@@ -57,10 +56,6 @@ public class MainActivity extends BaseActivity {
                 });
     }
 
-    @Override
-    protected void createRouter() {
-        this.router = new MainRouter(this);
-    }
 
     @Override
     protected void initUi() {

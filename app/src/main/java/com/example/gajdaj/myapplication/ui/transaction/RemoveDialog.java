@@ -8,7 +8,10 @@ import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.presentation.RemoveDialogPresenter;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
 
+import javax.inject.Inject;
+
 public class RemoveDialog implements PresenterView{
+
 
     private RemoveDialogPresenter presenter;
     private int id;
@@ -17,6 +20,7 @@ public class RemoveDialog implements PresenterView{
     protected RemoveDialog(BaseActivity context, int id) {
         this.context = context;
         this.id = id;
+
         presenter = new RemoveDialogPresenter(App.getRepository());
     }
 

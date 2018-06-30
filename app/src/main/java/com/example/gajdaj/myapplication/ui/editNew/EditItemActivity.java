@@ -9,10 +9,13 @@ import android.view.MenuInflater;
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
 
+import javax.inject.Inject;
+
 
 public class EditItemActivity extends BaseActivity {
 
-    private EditItemRouter router;
+    @Inject
+    EditItemRouter router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,6 @@ public class EditItemActivity extends BaseActivity {
         setContentView(R.layout.activity_edit_item);
 
         initUi();
-        createRouter();
         router.showEditItemFragment(R.id.edit_container);
 
     }
@@ -29,12 +31,6 @@ public class EditItemActivity extends BaseActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-
-    @Override
-    protected void createRouter() {
-        this.router = new EditItemRouter(this);
     }
 
     @Override

@@ -6,11 +6,11 @@ import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 
-public abstract class ViewRouter {
+public abstract class ViewRouter <A extends BaseActivity> {
 
-    protected BaseActivity context;
+    protected A context;
 
-    public ViewRouter(BaseActivity context) {
+    public ViewRouter(A context) {
         this.context = context;
     }
 

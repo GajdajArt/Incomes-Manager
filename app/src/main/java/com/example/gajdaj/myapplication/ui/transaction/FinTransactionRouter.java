@@ -6,9 +6,12 @@ import com.example.gajdaj.myapplication.ui.BaseActivity;
 import com.example.gajdaj.myapplication.ui.ViewRouter;
 import com.example.gajdaj.myapplication.ui.editNew.EditItemFragment;
 
-public class FinTransactionRouter extends ViewRouter {
+import javax.inject.Inject;
 
-    public FinTransactionRouter(BaseActivity context) {
+public class FinTransactionRouter extends ViewRouter<FinTransactionActivity> {
+
+    @Inject
+    public FinTransactionRouter(FinTransactionActivity context) {
         super(context);
     }
 

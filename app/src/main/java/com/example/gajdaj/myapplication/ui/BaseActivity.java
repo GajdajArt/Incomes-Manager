@@ -23,7 +23,6 @@ public abstract class BaseActivity extends AppCompatActivity implements HasSuppo
         super.onCreate(savedInstanceState);
     }
 
-    protected abstract void createRouter();
     protected abstract void initUi();
 
     @Override

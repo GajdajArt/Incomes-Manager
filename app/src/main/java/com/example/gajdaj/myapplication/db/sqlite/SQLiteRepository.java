@@ -15,7 +15,7 @@ public class SQLiteRepository implements TransactionRepository {
 
     @Inject
     public SQLiteRepository(Context context) {
-        dao = new TransactionSQLiteDAO(context);
+        dao = new TransactionDAOImpl(context);
     }
 
     @Override

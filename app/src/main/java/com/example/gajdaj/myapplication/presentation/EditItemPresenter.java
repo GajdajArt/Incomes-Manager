@@ -4,10 +4,13 @@ import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.ui.editNew.EditItemView;
 
+import javax.inject.Inject;
+
 public class EditItemPresenter extends Presenter<EditItemView> {
 
     private TransactionRepository repository;
 
+    @Inject
     public EditItemPresenter(TransactionRepository repository) {
         this.repository = repository;
     }

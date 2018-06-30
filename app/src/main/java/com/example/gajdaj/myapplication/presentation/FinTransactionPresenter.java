@@ -7,13 +7,17 @@ import com.example.gajdaj.myapplication.ui.transaction.FinTransactionView;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class FinTransactionPresenter extends Presenter<FinTransactionView> {
 
     private TransactionRepository repository;
     private int id;
     private FinanceTransaction transaction;
 
-    public FinTransactionPresenter(TransactionRepository repository, int id) {
+    @Inject
+    public FinTransactionPresenter(TransactionRepository repository, @Named("trId") int id) {
         this.repository = repository;
         this.id = id;
     }

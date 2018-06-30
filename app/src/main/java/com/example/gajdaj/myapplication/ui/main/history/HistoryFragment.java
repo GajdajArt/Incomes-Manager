@@ -38,8 +38,6 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-//        presenter = new HistoryPresenter(App.getRepository());
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 
