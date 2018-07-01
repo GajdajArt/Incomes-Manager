@@ -9,18 +9,19 @@ import com.example.gajdaj.myapplication.presentation.RemoveDialogPresenter;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 public class RemoveDialog implements PresenterView{
 
-
-    private RemoveDialogPresenter presenter;
+    RemoveDialogPresenter presenter;
     private int id;
     private BaseActivity context;
 
-    protected RemoveDialog(BaseActivity context, int id) {
+
+    @Inject
+    public RemoveDialog(FinTransactionActivity context, @Named("trId") int id) {
         this.context = context;
         this.id = id;
-
         presenter = new RemoveDialogPresenter(App.getRepository());
     }
 

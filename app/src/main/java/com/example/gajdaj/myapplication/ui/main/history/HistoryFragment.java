@@ -28,8 +28,8 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
 
     @Inject
     HistoryPresenter presenter;
-
-    private HistoryAdapter adapter;
+    @Inject
+    HistoryAdapter adapter;
 
     public static HistoryFragment getInstance() {
         return new HistoryFragment();

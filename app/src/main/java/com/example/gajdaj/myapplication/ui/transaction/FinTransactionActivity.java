@@ -20,8 +20,9 @@ import javax.inject.Inject;
 public class FinTransactionActivity extends BaseActivity{
 
     @Inject
+    RemoveDialog dialog;
+    @Inject
     FinTransactionRouter router;
-    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,7 @@ public class FinTransactionActivity extends BaseActivity{
         setContentView(R.layout.activity_transaction);
 
         initUi();
-        Intent intent = getIntent();
-        id = intent.getIntExtra(PresenterView.ID_KEY, 0);
-
-        Bundle bundle = new Bundle();
-        bundle.putInt(FinTransactionView.ID_KEY, id);
-        router.showTransactionFragment(R.id.transaction_container, bundle);
+        router.showTransactionFragment(R.id.transaction_container);
     }
 
     @Override
@@ -54,12 +50,9 @@ public class FinTransactionActivity extends BaseActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-                Bundle bundle = new Bundle();
-                bundle.putInt(PresenterView.ID_KEY, id);
-                router.showEditItemFragment(R.id.transaction_container, bundle);
+                router.showEditItemFragment(R.id.transaction_container);
                 break;
             case R.id.action_remove:
-                RemoveDialog dialog = new RemoveDialog(this, id);
                 dialog.show();
                 break;
         }

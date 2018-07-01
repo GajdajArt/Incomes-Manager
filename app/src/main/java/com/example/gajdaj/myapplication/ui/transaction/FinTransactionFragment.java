@@ -13,6 +13,7 @@ import com.example.gajdaj.myapplication.presentation.FinTransactionPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 public class FinTransactionFragment extends BaseFragment implements FinTransactionView {
 
@@ -23,7 +24,10 @@ public class FinTransactionFragment extends BaseFragment implements FinTransacti
     private TextView sumTV;
     private TextView typeTV;
     private TextView balanceTV;
-    private int id;
+
+    @Inject
+    @Named("trId")
+    int id;
 
 
     public static FinTransactionFragment getInstance() {
@@ -34,10 +38,10 @@ public class FinTransactionFragment extends BaseFragment implements FinTransacti
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        id = 0;
-        if (this.getArguments() != null) {
-            id = this.getArguments().getInt(ID_KEY);
-        }
+//        id = 0;
+//        if (this.getArguments() != null) {
+//            id = this.getArguments().getInt(ID_KEY);
+//        }
 
         return inflater.inflate(R.layout.fragment_transaction, container, false);
     }

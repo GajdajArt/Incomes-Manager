@@ -16,11 +16,14 @@ import com.example.gajdaj.myapplication.ui.transaction.FinTransactionActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryHolder> {
 
     private List<FinanceTransaction> items;
     private HistoryPresenter presenter;
 
+    @Inject
     public HistoryAdapter(HistoryPresenter presenter) {
         this.items = new ArrayList<>();
         this.presenter = presenter;
