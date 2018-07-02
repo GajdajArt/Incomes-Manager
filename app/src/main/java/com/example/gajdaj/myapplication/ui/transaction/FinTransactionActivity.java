@@ -56,8 +56,11 @@ public class FinTransactionActivity extends BaseActivity{
                 dialog.show();
                 break;
         }
-
         return true;
+    }
+
+    public int getID() {
+        return getIntent().getIntExtra(PresenterView.ID_KEY, 0);
     }
 
 

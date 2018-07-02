@@ -16,9 +16,6 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
-/**
- * Created by pc on 30.06.2018.
- */
 @Module
 public abstract class FinTransactionActivityModule {
 
@@ -33,6 +30,6 @@ public abstract class FinTransactionActivityModule {
     @Provides
     @Named("trId")
     public static int provideFinTransactionId(FinTransactionActivity activity) {
-        return activity.getIntent().getIntExtra(PresenterView.ID_KEY, 0);
+        return activity.getID();
     }
 }
