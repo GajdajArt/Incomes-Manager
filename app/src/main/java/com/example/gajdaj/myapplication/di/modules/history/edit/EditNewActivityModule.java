@@ -1,7 +1,7 @@
-package com.example.gajdaj.myapplication.di.modules.editNew;
+package com.example.gajdaj.myapplication.di.modules.history.edit;
 
 import com.example.gajdaj.myapplication.di.scopes.FragmentScope;
-import com.example.gajdaj.myapplication.ui.editNew.EditItemFragment;
+import com.example.gajdaj.myapplication.ui.history.edit.EditItemFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

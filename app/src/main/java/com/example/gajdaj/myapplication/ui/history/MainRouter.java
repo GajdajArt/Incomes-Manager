@@ -1,8 +1,8 @@
-package com.example.gajdaj.myapplication.ui.main;
+package com.example.gajdaj.myapplication.ui.history;
 
 import com.example.gajdaj.myapplication.ui.ViewRouter;
-import com.example.gajdaj.myapplication.ui.main.history.HistoryFragment;
-import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
+import com.example.gajdaj.myapplication.ui.history.list.HistoryFragment;
+import com.example.gajdaj.myapplication.ui.history.settings.SettingsFragment;
 
 import javax.inject.Inject;
 

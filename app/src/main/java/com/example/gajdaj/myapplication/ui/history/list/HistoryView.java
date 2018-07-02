@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.main.history;
+package com.example.gajdaj.myapplication.ui.history.list;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.presentation.PresenterView;

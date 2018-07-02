@@ -2,9 +2,8 @@ package com.example.gajdaj.myapplication.ui.transaction;
 
 import android.os.Bundle;
 
-import com.example.gajdaj.myapplication.ui.BaseActivity;
 import com.example.gajdaj.myapplication.ui.ViewRouter;
-import com.example.gajdaj.myapplication.ui.editNew.EditItemFragment;
+import com.example.gajdaj.myapplication.ui.history.edit.EditItemFragment;
 
 import javax.inject.Inject;
 import javax.inject.Named;

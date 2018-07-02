@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.history.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".ui.editNew.EditItemActivity"
+            android:name=".ui.history.edit.EditItemActivity"
             android:label="@string/title_activity_edit_item"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

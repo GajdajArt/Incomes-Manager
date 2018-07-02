@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.main;
+package com.example.gajdaj.myapplication.ui.history;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.ui.BaseActivity;
-import com.example.gajdaj.myapplication.ui.editNew.EditItemActivity;
+import com.example.gajdaj.myapplication.ui.history.edit.EditItemActivity;
 
 import javax.inject.Inject;
 

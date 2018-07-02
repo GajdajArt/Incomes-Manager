@@ -1,8 +1,9 @@
-package com.example.gajdaj.myapplication.presentation;
+package com.example.gajdaj.myapplication.presentation.presenters;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.domain.TransactionType;
+import com.example.gajdaj.myapplication.presentation.Presenter;
 import com.example.gajdaj.myapplication.ui.transaction.FinTransactionView;
 
 import java.util.ArrayList;

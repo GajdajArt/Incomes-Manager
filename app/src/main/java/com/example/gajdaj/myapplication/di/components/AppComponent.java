@@ -1,26 +1,19 @@
 package com.example.gajdaj.myapplication.di.components;
 
-import android.content.Context;
 
 import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.di.modules.AppModule;
 
 import javax.inject.Singleton;
 
-import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 @Singleton
-@Component(modules = {AppModule.class})
-public interface AppComponent {
+@Component(modules = {AppModule.class, AndroidSupportInjectionModule.class})
+public interface AppComponent extends AndroidInjector<App> {
 
     @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        Builder context(Context context);
-        AppComponent build();
-    }
-
-    void inject(App app);
+    abstract class Builder extends AndroidInjector.Builder<App> {}
 }

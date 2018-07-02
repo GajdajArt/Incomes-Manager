@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.main.settings;
+package com.example.gajdaj.myapplication.ui.history.settings;
 
 
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.presentation.SettingsPresenter;
+import com.example.gajdaj.myapplication.presentation.presenters.SettingsPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 import javax.inject.Inject;

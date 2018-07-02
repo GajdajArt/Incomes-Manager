@@ -10,33 +10,14 @@ import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 
-public class App extends Application implements HasActivityInjector{
-
-    private static TransactionRepository repository;
-
-    @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+public class App extends DaggerApplication{
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        repository = new SQLiteRepository(getApplicationContext());
-        DaggerAppComponent
-                .builder()
-                .context(this)
-                .build()
-                .inject(this);
-    }
-
-    public static TransactionRepository getRepository() {
-        return repository;
-    }
-
-    @Override
-    public AndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent.builder().create(this);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.editNew;
+package com.example.gajdaj.myapplication.ui.history.edit;
 
 
 import android.os.Bundle;
@@ -13,10 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionType;
-import com.example.gajdaj.myapplication.presentation.EditItemPresenter;
+import com.example.gajdaj.myapplication.presentation.presenters.EditItemPresenter;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 import com.example.gajdaj.myapplication.ui.MyAsyncTask;

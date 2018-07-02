@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.main.history;
+package com.example.gajdaj.myapplication.ui.history.list;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,9 +8,8 @@ import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.domain.TransactionType;
-import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
-import com.example.gajdaj.myapplication.ui.main.MainActivity;
+import com.example.gajdaj.myapplication.presentation.presenters.HistoryPresenter;
+import com.example.gajdaj.myapplication.ui.history.MainActivity;
 import com.example.gajdaj.myapplication.ui.transaction.FinTransactionActivity;
 
 import java.util.ArrayList;

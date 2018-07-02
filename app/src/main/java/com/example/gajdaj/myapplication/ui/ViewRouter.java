@@ -3,7 +3,6 @@ package com.example.gajdaj.myapplication.ui;
 import android.content.Intent;
 
 import com.example.gajdaj.myapplication.presentation.PresenterView;
-import com.example.gajdaj.myapplication.ui.main.settings.SettingsFragment;
 
 
 public abstract class ViewRouter <A extends BaseActivity> {

@@ -7,9 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.presentation.FinTransactionPresenter;
+import com.example.gajdaj.myapplication.presentation.presenters.FinTransactionPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 
 import javax.inject.Inject;

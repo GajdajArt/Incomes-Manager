@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.editNew;
+package com.example.gajdaj.myapplication.ui.history.edit;
 
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.presentation.PresenterView;

@@ -1,9 +1,7 @@
-package com.example.gajdaj.myapplication.ui.editNew;
+package com.example.gajdaj.myapplication.ui.history.edit;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 
 
 import com.example.gajdaj.myapplication.R;

@@ -1,4 +1,4 @@
-package com.example.gajdaj.myapplication.ui.main.history;
+package com.example.gajdaj.myapplication.ui.history.list;
 
 
 import android.os.Bundle;
@@ -11,9 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gajdaj.myapplication.R;
-import com.example.gajdaj.myapplication.app.App;
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
-import com.example.gajdaj.myapplication.presentation.HistoryPresenter;
+import com.example.gajdaj.myapplication.presentation.presenters.HistoryPresenter;
 import com.example.gajdaj.myapplication.ui.BaseFragment;
 import com.example.gajdaj.myapplication.ui.MyAsyncTask;
 

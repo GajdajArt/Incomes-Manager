@@ -7,12 +7,8 @@ import android.support.v4.app.Fragment;
 import com.example.gajdaj.myapplication.presentation.PresenterView;
 
 import dagger.android.support.AndroidSupportInjection;
+import dagger.android.support.DaggerFragment;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends DaggerFragment{
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        AndroidSupportInjection.inject(this);
-        super.onCreate(savedInstanceState);
-    }
 }
