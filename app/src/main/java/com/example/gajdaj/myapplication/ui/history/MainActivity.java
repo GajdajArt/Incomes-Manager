@@ -35,24 +35,21 @@ public class MainActivity extends BaseActivity {
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        switch (menuItem.getItemId()) {
-                            case R.id.history_menu_item:
-                                router.showHistory(R.id.history_container);
-                                break;
-                            case R.id.settings_menu_Item:
-                                router.showSettings(R.id.history_container);
-                                break;
-                            default:
-                                break;
-                        }
-                        // Close the navigation drawer when an item is selected.
-                        menuItem.setChecked(true);
-                        drawer.closeDrawers();
-                        return true;
+                menuItem -> {
+                    switch (menuItem.getItemId()) {
+                        case R.id.history_menu_item:
+                            router.showHistory(R.id.history_container);
+                            break;
+                        case R.id.settings_menu_Item:
+                            router.showSettings(R.id.history_container);
+                            break;
+                        default:
+                            break;
                     }
+                    // Close the navigation drawer when an item is selected.
+                    menuItem.setChecked(true);
+                    drawer.closeDrawers();
+                    return true;
                 });
     }
 
@@ -63,12 +60,7 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                router.startActivity(EditItemActivity.class);
-            }
-        });
+        fab.setOnClickListener(view -> router.startActivity(EditItemActivity.class));
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

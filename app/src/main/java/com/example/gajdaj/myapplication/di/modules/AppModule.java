@@ -19,6 +19,8 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 @Module(includes = {AndroidSupportInjectionModule.class})
 public abstract class AppModule {
@@ -35,9 +37,11 @@ public abstract class AppModule {
         return new SQLiteRepository(context);
     }
 
-//    @Singleton
-//    @Binds
-//    abstract TransactionRepository repository(SQLiteRepository repository);
+    @Provides
+    @Singleton
+    public static Scheduler mainThread() {
+        return AndroidSchedulers.mainThread();
+    }
 
     @ActivityScope
     @ContributesAndroidInjector(modules = {MainActivityModule.class})

@@ -11,8 +11,4 @@ public abstract class Presenter<T extends PresenterView> {
     public void onDetach() {
         view = null;
     }
-
-    interface Callback{
-        void callingBack();
-    }
 }

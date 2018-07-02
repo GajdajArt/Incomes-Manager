@@ -56,19 +56,10 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
     public void onResume() {
         super.onResume();
         presenter.onAttach(this);
-        MyAsyncTask a = new MyAsyncTask(new MyAsyncTask.ActionCallback() {
-            @Override
-            public void run() {
-                presenter.getData();
-            }
-        }, new MyAsyncTask.ResultCallback() {
-            @Override
-            public void run() {
-                adapter.notifyDataSetChanged();
-            }
-        });
-        a.execute();
+        presenter.getData();
     }
+
+
 
     @Override
     public void onDestroy() {
@@ -79,5 +70,6 @@ public class HistoryFragment extends BaseFragment implements HistoryView {
     @Override
     public void showData(ArrayList<FinanceTransaction> list) {
         adapter.setItemsList(list);
+        adapter.notifyDataSetChanged();
     }
 }

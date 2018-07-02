@@ -11,6 +11,8 @@ import com.example.gajdaj.myapplication.ui.BaseActivity;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
 public class RemoveDialog implements PresenterView{
 
     RemoveDialogPresenter presenter;
@@ -22,7 +24,7 @@ public class RemoveDialog implements PresenterView{
     public RemoveDialog(FinTransactionActivity context, @Named("trId") int id, TransactionRepository repo) {
         this.context = context;
         this.id = id;
-        presenter = new RemoveDialogPresenter(repo);
+        presenter = new RemoveDialogPresenter(repo, AndroidSchedulers.mainThread());
     }
 
     public void show(){

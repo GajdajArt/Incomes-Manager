@@ -89,17 +89,12 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
                         transaction.setType(TransactionType.EXPENSES);
                     }
 
-                    MyAsyncTask a = new MyAsyncTask(new MyAsyncTask.ActionCallback() {
-                        @Override
-                        public void run() {
-                            if (id != -1) {
-                                presenter.editItem(transaction, id);
-                            } else {
-                                presenter.addNewItem(transaction);
-                            }
-                        }
-                    }, null);
-                    a.execute(transaction);
+                    if (id != -1) {
+                        presenter.editItem(transaction, id);
+                    } else {
+                        presenter.addNewItem(transaction);
+                    }
+
                     getActivity().onBackPressed();
                 }
             }
@@ -107,6 +102,7 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
     }
 
     private void setUI() {
+
         if (this.getArguments() != null) {
             id = this.getArguments().getInt(PresenterView.ID_KEY);
             presenter.setUiByID(id);
