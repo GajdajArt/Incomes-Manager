@@ -1,6 +1,7 @@
 package com.example.gajdaj.myapplication.ui.history.edit;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -77,7 +78,6 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
             @Override
             public void onClick(View view) {
 
-                if (isValid()) {
 
                     final FinanceTransaction transaction = new FinanceTransaction();
                     transaction.setTitle(title.getText().toString());
@@ -89,14 +89,8 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
                         transaction.setType(TransactionType.EXPENSES);
                     }
 
-                    if (id != -1) {
-                        presenter.editItem(transaction, id);
-                    } else {
-                        presenter.addNewItem(transaction);
-                    }
+                    presenter.save(transaction, id);
 
-                    getActivity().onBackPressed();
-                }
             }
         });
     }
@@ -105,11 +99,12 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
 
         if (this.getArguments() != null) {
             id = this.getArguments().getInt(PresenterView.ID_KEY);
-            presenter.setUiByID(id);
+            presenter.loadHistoryItem(id);
         }
     }
 
-    public void showData(FinanceTransaction transaction) {
+    public void showHistoryItem(FinanceTransaction transaction) {
+
         title.setText(transaction.getTitle());
         sum.setText(Double.toString(transaction.getSum()));
         switch (transaction.getType()) {
@@ -122,24 +117,34 @@ public class EditItemFragment extends BaseFragment implements EditItemView {
         }
     }
 
-    private boolean isValid() {
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
-        boolean result = false;
+    @Override
+    public void showTitleError(String message) {
 
-        String titleValidMessage = presenter.validateTitle(title.getText().toString());
-        String sumValidMessage = presenter.validateSum(sum.getText().toString());
+    }
 
-        if (titleValidMessage == null) {
-            if (sumValidMessage == null) {
-                result = true;
-            } else {
-                sum.setError(sumValidMessage);
-            }
-        } else {
-            title.setError(titleValidMessage);
-        }
+    @Override
+    public void showSumError(String message) {
 
-        return result;
+    }
+
+    @Override
+    public void showLoadView() {
+
+    }
+
+    @Override
+    public void closeView() {
+
+    }
+
+    @Override
+    public void showSaveError() {
+
     }
 
     @Override

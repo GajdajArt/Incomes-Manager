@@ -8,6 +8,7 @@ import com.example.gajdaj.myapplication.ui.history.list.HistoryView;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
@@ -21,20 +22,24 @@ public class HistoryPresenter extends Presenter<HistoryView> {
 
     private TransactionRepository repository;
     private Scheduler mainThread;
+    private Scheduler subscribeThread;
     private Disposable observer;
 
 
     @Inject
-    public HistoryPresenter(TransactionRepository repository, HistoryView view, Scheduler mainThread) {
+    public HistoryPresenter(TransactionRepository repository, HistoryView view,
+                            @Named("observe") Scheduler mainThread,
+                            @Named("subscribe") Scheduler subscribeThread) {
         this.repository = repository;
         this.view = view;
         this.mainThread = mainThread;
+        this.subscribeThread = subscribeThread;
     }
 
     public void getData() {
 
         Observable<ArrayList<FinanceTransaction>> o = Observable.fromCallable(()-> repository.getList())
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(subscribeThread)
                 .observeOn(mainThread);
 
         observer = o.subscribe(list -> view.showData(list));

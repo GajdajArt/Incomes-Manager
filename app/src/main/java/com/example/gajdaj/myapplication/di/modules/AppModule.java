@@ -13,6 +13,7 @@ import com.example.gajdaj.myapplication.ui.history.edit.EditItemActivity;
 import com.example.gajdaj.myapplication.ui.history.MainActivity;
 import com.example.gajdaj.myapplication.ui.transaction.FinTransactionActivity;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -21,6 +22,7 @@ import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 @Module(includes = {AndroidSupportInjectionModule.class})
 public abstract class AppModule {
@@ -37,10 +39,16 @@ public abstract class AppModule {
         return new SQLiteRepository(context);
     }
 
+    @Named("observe")
     @Provides
-    @Singleton
     public static Scheduler mainThread() {
         return AndroidSchedulers.mainThread();
+    }
+
+    @Provides
+    @Named("subscribe")
+    public static Scheduler subscribeThread() {
+        return Schedulers.io();
     }
 
     @ActivityScope

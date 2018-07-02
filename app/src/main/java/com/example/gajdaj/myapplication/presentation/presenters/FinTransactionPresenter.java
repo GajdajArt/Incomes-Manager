@@ -11,16 +11,24 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import io.reactivex.Scheduler;
+
 public class FinTransactionPresenter extends Presenter<FinTransactionView> {
 
     private TransactionRepository repository;
     private int id;
     private FinanceTransaction transaction;
+    private Scheduler mainThread;
+    private Scheduler subscribeThread;
 
     @Inject
-    public FinTransactionPresenter(TransactionRepository repository, @Named("trId") int id) {
+    public FinTransactionPresenter(TransactionRepository repository, @Named("trId") int id,
+                                   @Named("observe") Scheduler mainThread,
+                                   @Named("subscribe") Scheduler subscribeThread) {
         this.repository = repository;
         this.id = id;
+        this.mainThread = mainThread;
+        this.subscribeThread = subscribeThread;
     }
 
     @Override
