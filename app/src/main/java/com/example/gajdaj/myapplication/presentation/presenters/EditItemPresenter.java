@@ -1,7 +1,5 @@
 package com.example.gajdaj.myapplication.presentation.presenters;
 
-import android.widget.Toast;
-
 import com.example.gajdaj.myapplication.domain.FinanceTransaction;
 import com.example.gajdaj.myapplication.domain.TransactionRepository;
 import com.example.gajdaj.myapplication.presentation.Presenter;
@@ -51,7 +49,7 @@ public class EditItemPresenter extends Presenter<EditItemView> {
         view.showLoadView();
 
         o = Observable.just(transaction)
-                .map(new ValidateAndSave())
+                .map(new Validate())
                 .flatMap(new Function<Observable<FinanceTransaction>, ObservableSource<?>>() {
                     @Override
                     public ObservableSource<?> apply(Observable<FinanceTransaction> financeTransactionObservable) throws Exception {
@@ -80,29 +78,6 @@ public class EditItemPresenter extends Presenter<EditItemView> {
 
     }
 
-    private boolean isValid(FinanceTransaction transaction) {
-
-        boolean result = true;
-
-        String titleValidMessage = validateTitle(transaction.getTitle());
-
-        if (titleValidMessage != null) {
-            view.showTitleError(titleValidMessage);
-            result = false;
-        }
-        return result;
-    }
-
-
-    private String validateTitle(String title) {
-
-        String message = null;
-        if (title.isEmpty()) {
-            message = ENTER_TITLE;
-        }
-        return message;
-    }
-
 
     @Override
     public void onDetach() {
@@ -111,7 +86,7 @@ public class EditItemPresenter extends Presenter<EditItemView> {
     }
 
 
-    private static class ValidateAndSave implements Function<FinanceTransaction, Observable<FinanceTransaction>> {
+    private static class Validate implements Function<FinanceTransaction, Observable<FinanceTransaction>> {
 
         @Override
         public Observable<FinanceTransaction> apply(FinanceTransaction transaction) throws Exception {
